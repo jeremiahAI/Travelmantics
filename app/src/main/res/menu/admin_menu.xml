@@ -6,4 +6,9 @@
         android:id="@+id/save_menu"
         android:title="@string/save"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        app:showAsAction="never" />
 </menu>

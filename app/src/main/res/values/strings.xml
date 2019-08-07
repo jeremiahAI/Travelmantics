@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">Travelmantics</string>
+    <string name="sample_description">This past spring Armenians voted in a new, more liberal government. The resulting energy has made the country all the more inviting to travelers. The Alexander, part of Marriott’s Luxury Collection, recently opened in Yerevan, giving the capital its first world-class hotel. And a number of new restaurants in the city, including Sherep, are breathing new life into Armenia’s ancient cuisine. Armenia has a famously beautiful countryside landscape, and there’s no better way to see it than on foot. The Transcaucasian Trail passes the spa town of Dilijan, the bucolic Dilijan National Park, and a pair of 10th-century Christian monasteries.</string>
     <string name="hint_description">Description</string>
     <string name="hint_price">Price</string>
+    <string name="sample_price">150,000</string>
     <string name="hint_title">Title</string>
+    <string name="sample_title">Armenia</string>
     <string name="save">save</string>
-    <string name="title_activity_user">UserActivity</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="title_activity_deals">Deals</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -99,4 +101,5 @@
     <string name="new_deal">New Deal</string>
     <string name="logout">Logout</string>
     <string name="select_image">Select Image</string>
+    <string name="title_activity_admin">Admin Page</string>
 </resources>

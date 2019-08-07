@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -88,6 +89,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
         TextView priceTV;
         TextView descriptionTV;
         ImageView imageView;
+        ProgressBar imageLoadingProgressBar;
 
 
         DealsViewHolder(@NonNull View itemView) {
@@ -96,6 +98,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
             priceTV = itemView.findViewById(R.id.price_tv);
             descriptionTV = itemView.findViewById(R.id.description_tv);
             imageView = itemView.findViewById(R.id.deal_image_view);
+            imageLoadingProgressBar = itemView.findViewById(R.id.progress_bar);
             itemView.setOnClickListener(this);
 
         }
@@ -115,13 +118,20 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
         }
 
         private void showImage(String url) {
+
             if (url != null && !url.isEmpty()) {
+                imageView.setVisibility(View.INVISIBLE);
+                imageLoadingProgressBar.setVisibility(View.VISIBLE);
+
                 int width = Resources.getSystem().getDisplayMetrics().widthPixels;
                 Picasso.get()
                         .load(url)
 //                        .resize(width,width*2/3)
 //                        .centerCrop()
                         .into(imageView);
+
+                imageView.setVisibility(View.VISIBLE);
+                imageLoadingProgressBar.setVisibility(View.INVISIBLE);
             }
         }
 

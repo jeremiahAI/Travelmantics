@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".DealsActivity"
-            android:label="@string/title_activity_user">
+            android:label="@string/title_activity_deals">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,9 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".AdminActivity">
+        <activity
+            android:name=".AdminActivity"
+            android:label="@string/title_activity_admin">
 
         </activity>
     </application>

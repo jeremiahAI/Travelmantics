@@ -37,9 +37,13 @@ public class DealsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.activity_deals);
         firebaseAuth = FirebaseAuth.getInstance();
         adminUsersReference = FirebaseDatabase.getInstance().getReference().child(ADMINISTRATORS_PATH);
+
+        if (firebaseAuth.getCurrentUser() == null) {
+            signIn();
+        } else checkForAdmin(firebaseAuth.getUid());
 
 
         listener = new FirebaseAuth.AuthStateListener() {

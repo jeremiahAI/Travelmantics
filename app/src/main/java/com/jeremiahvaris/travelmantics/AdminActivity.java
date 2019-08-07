@@ -15,7 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -117,9 +120,23 @@ public class AdminActivity extends AppCompatActivity {
                 initiateSave();
                 return true;
             }
+            case R.id.logout: {
+                signOut();
+                onBackPressed();
+            }
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void signOut() {
+
+        AuthUI.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                    }
+                });
     }
 
     private void initiateSave() {
@@ -185,7 +202,7 @@ public class AdminActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.save_menu, menu);
+        getMenuInflater().inflate(R.menu.admin_menu, menu);
         return true;
     }
 
