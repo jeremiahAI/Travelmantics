@@ -4,16 +4,17 @@ class TravelDeal {
     private String description;
     private String price;
     private String title;
-    private String imageURL;
+    private String imageUrl;
     private String id;
 
     public TravelDeal() {
     }
 
-    public TravelDeal(String description, String price, String title) {
+    public TravelDeal(String description, String price, String title, String imageURL) {
         this.description = description;
         this.price = price;
         this.title = title;
+        this.imageUrl = imageURL;
     }
 
     public String getDescription() {
@@ -30,5 +31,9 @@ class TravelDeal {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 }

@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserActivity extends AppCompatActivity {
+public class DealsActivity extends AppCompatActivity {
     private static final String ADMINISTRATORS_PATH = "administrators";
     RecyclerView dealsRecyclerView;
     DatabaseReference adminUsersReference;
@@ -71,7 +71,7 @@ public class UserActivity extends AppCompatActivity {
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
-                        .setLogo(R.drawable.ic_launcher_background)
+                        .setLogo(R.drawable.ic_launcher)
                         .build(),
                 RC_SIGN_IN);
     }
@@ -82,7 +82,7 @@ public class UserActivity extends AppCompatActivity {
         super.onResume();
         firebaseAuth.addAuthStateListener(listener);
         dealsRecyclerView.setAdapter(new DealsAdapter());
-        ((DealsAdapter) dealsRecyclerView.getAdapter()).isAdmin(isAdmin);
+        ((DealsAdapter) dealsRecyclerView.getAdapter()).setIsAdmin(isAdmin);
     }
 
     @Override
@@ -142,8 +142,8 @@ public class UserActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 isAdmin = true;
                 if (dealsRecyclerView.getAdapter() != null)
-                    ((DealsAdapter) dealsRecyclerView.getAdapter()).isAdmin(isAdmin);
-                Toast.makeText(UserActivity.this, dataSnapshot.getKey(), Toast.LENGTH_LONG).show();
+                    ((DealsAdapter) dealsRecyclerView.getAdapter()).setIsAdmin(isAdmin);
+                Toast.makeText(DealsActivity.this, dataSnapshot.getKey(), Toast.LENGTH_LONG).show();
                 invalidateOptionsMenu();
             }
 

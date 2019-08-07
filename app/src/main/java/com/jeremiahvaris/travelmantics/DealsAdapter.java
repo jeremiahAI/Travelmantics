@@ -1,8 +1,10 @@
 package com.jeremiahvaris.travelmantics;
 
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -76,7 +79,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
         return deals.size();
     }
 
-    public void isAdmin(boolean isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 
@@ -84,6 +87,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
         TextView titleTV;
         TextView priceTV;
         TextView descriptionTV;
+        ImageView imageView;
 
 
         DealsViewHolder(@NonNull View itemView) {
@@ -91,6 +95,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
             titleTV = itemView.findViewById(R.id.title_tv);
             priceTV = itemView.findViewById(R.id.price_tv);
             descriptionTV = itemView.findViewById(R.id.description_tv);
+            imageView = itemView.findViewById(R.id.deal_image_view);
             itemView.setOnClickListener(this);
 
         }
@@ -99,6 +104,7 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
             titleTV.setText(deal.getTitle());
             priceTV.setText(deal.getPrice());
             descriptionTV.setText(deal.getDescription());
+            showImage(deal.getImageUrl());
         }
 
         @Override
@@ -106,6 +112,17 @@ public class DealsAdapter extends RecyclerView.Adapter<DealsAdapter.DealsViewHol
 //            getAdapterPosition();
             // Todo: Do something
 
+        }
+
+        private void showImage(String url) {
+            if (url != null && !url.isEmpty()) {
+                int width = Resources.getSystem().getDisplayMetrics().widthPixels;
+                Picasso.get()
+                        .load(url)
+//                        .resize(width,width*2/3)
+//                        .centerCrop()
+                        .into(imageView);
+            }
         }
 
     }
